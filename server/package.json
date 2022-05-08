@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server",
     "dev": "nodemon src/server",
-    "test": "jest",
+    "test": "jest --watchAll",
     "test:coverage": "jest --coverage"
   },
   "keywords": [],
