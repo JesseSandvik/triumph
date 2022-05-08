@@ -2,9 +2,19 @@ const request = require("supertest");
 const app = require("../app");
 
 describe("Register", () => {
-  test("01. returns a 201 status for a successful POST request", async () => {
-    const res = await request(app).post("/register");
+  test("returns a 201 status for a successful POST request", async () => {
+    const newUser = {
+      username: "Dennis Reynolds",
+      password: "!Dayman10",
+    };
+    const res = await request(app).post("/register").send({ data: newUser });
 
-    expect(res.status).toEqual(201);
+    const { status } = res;
+    const { data } = res.body;
+
+    expect(status).toEqual(201);
+    expect(data).toEqual(
+      expect.objectContaining({ username: newUser.username })
+    );
   });
 });

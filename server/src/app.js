@@ -3,9 +3,8 @@ const app = express();
 
 const registerRouter = require("./register/register.router");
 
-app.get("/", (req, res) => {
-  res.status(200).json("Hello World!");
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use("/register", registerRouter);
 
