@@ -11,10 +11,14 @@ describe("Register", () => {
 
     const { status } = res;
     const { data } = res.body;
+    const { password } = data;
 
+    expect(res.body.error).toBeUndefined();
     expect(status).toEqual(201);
+    expect(res.type).toEqual(expect.stringContaining("json"));
     expect(data).toEqual(
       expect.objectContaining({ username: newUser.username })
     );
+    expect(password).not.toEqual(newUser.password);
   });
 });
