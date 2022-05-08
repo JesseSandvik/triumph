@@ -1,30 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1651991717399" clover="3.2.0">
-  <project timestamp="1651991717399" name="All files">
-    <metrics statements="25" coveredstatements="23" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1" elements="29" coveredelements="24" complexity="0" loc="25" ncloc="25" packages="3" files="4" classes="4"/>
+<coverage generated="1651992002067" clover="3.2.0">
+  <project timestamp="1651992002068" name="All files">
+    <metrics statements="30" coveredstatements="30" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="3" elements="35" coveredelements="33" complexity="0" loc="30" ncloc="30" packages="3" files="5" classes="5"/>
     <package name="src">
-      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="app.js" path="C:\Users\embra\triumph\server\src\app.js">
-        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.errors">
-      <metrics statements="4" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="errorHandler.js" path="C:\Users\embra\triumph\server\src\errors\errorHandler.js">
-        <metrics statements="4" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="2" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="3" count="0" type="stmt"/>
+        <line num="2" count="1" type="cond" truecount="0" falsecount="2"/>
+        <line num="3" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
+      </file>
+      <file name="notFound.js" path="C:\Users\embra\triumph\server\src\errors\notFound.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.register">
