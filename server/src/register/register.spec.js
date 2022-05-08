@@ -10,20 +10,16 @@ describe("Register", () => {
 
     const res = await request(app).post("/register").send({ data: user });
 
-    const { status } = res;
-    const { data } = res.body;
-    const { password } = data;
-
     expect(res.body.error).toBeUndefined();
-    expect(status).toEqual(201);
+    expect(res.status).toEqual(201);
     expect(res.type).toEqual(expect.stringContaining("json"));
-    expect(data).toEqual(
+    expect(res.body.data).toEqual(
       expect.objectContaining({
         username: user.username,
         password: expect.any(String),
       })
     );
-    expect(password).not.toEqual(user.password);
+    expect(res.body.data.password).not.toEqual(user.password);
   });
   test("returns a 404 status for a invalid/missing route", async () => {
     const res = await request(app).post("/register/bad-route");
@@ -39,9 +35,7 @@ describe("Register", () => {
     };
     const res = await request(app).post("/register").send({ data: user });
 
-    const { status } = res;
-
-    expect(status).toEqual(400);
+    expect(res.status).toEqual(400);
   });
   test("returns a 400 status if the username is an empty string", async () => {
     const user = {
@@ -50,8 +44,14 @@ describe("Register", () => {
     };
     const res = await request(app).post("/register").send({ data: user });
 
-    const { status } = res;
+    expect(res.status).toEqual(400);
+  });
+  test("returns a 400 status if the password is missing", async () => {
+    const user = {
+      username: "testingUsername99",
+    };
+    const res = await request(app).post("/register").send({ data: user });
 
-    expect(status).toEqual(400);
+    expect(res.status).toEqual(400);
   });
 });

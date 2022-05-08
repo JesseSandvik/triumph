@@ -1,9 +1,9 @@
 const bcrypt = require("bcrypt");
 
-const hasUsernameProperty = async (req, res, next) => {
-  const { username } = req.body.data;
+const hasUsernameProperty = (req, res, next) => {
+  const { password, username } = req.body.data;
 
-  if (!username) {
+  if (!username || !password) {
     next({
       status: 400,
       message: `A username is required!`,
