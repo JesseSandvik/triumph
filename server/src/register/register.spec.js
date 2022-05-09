@@ -35,6 +35,7 @@ describe("Register", () => {
     };
     const res = await request(app).post("/register").send({ data: user });
 
+    expect(res.body.error).toBeDefined();
     expect(res.status).toEqual(400);
   });
   test("returns a 400 status if the username is an empty string", async () => {
@@ -44,6 +45,7 @@ describe("Register", () => {
     };
     const res = await request(app).post("/register").send({ data: user });
 
+    expect(res.body.error).toBeDefined();
     expect(res.status).toEqual(400);
   });
   test("returns a 400 status if the password is missing", async () => {
@@ -52,6 +54,17 @@ describe("Register", () => {
     };
     const res = await request(app).post("/register").send({ data: user });
 
+    expect(res.body.error).toBeDefined();
+    expect(res.status).toEqual(400);
+  });
+  test("returns a 400 status if the password is an empty string", async () => {
+    const user = {
+      username: "testingUsername",
+      password: "",
+    };
+    const res = await request(app).post("/register").send({ data: user });
+
+    expect(res.body.error).toBeDefined();
     expect(res.status).toEqual(400);
   });
 });
