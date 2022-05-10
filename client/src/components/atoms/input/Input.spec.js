@@ -4,9 +4,9 @@ import Input from "./Input";
 
 describe("<Input />", () => {
   test("renders the Input component", () => {
-    render(<Input />);
+    render(<Input name='name' type='text' />);
 
-    const input = screen.getByRole("input", { name: /name/i });
+    const input = screen.getByRole("textbox");
 
     expect(input).toBeInTheDocument();
   });
