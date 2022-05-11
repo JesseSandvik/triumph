@@ -10,4 +10,11 @@ describe("Button", () => {
 
     expect(button).toBeInTheDocument();
   });
+  test("Button component has class when class is passed as prop", () => {
+    render(<Button className='testing-classname'>test</Button>);
+
+    const button = screen.getByRole("button", { name: /test/i });
+
+    expect(button).toHaveClass("testing-classname");
+  });
 });
