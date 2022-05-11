@@ -13,7 +13,6 @@ const hasUsernameProperty = (req, res, next) => {
 };
 
 const create = async (req, res) => {
-  console.log(res.body);
   const { username, password } = req.body.data;
   const hashedPassword = await bcrypt.hash(password, 10);
   const newUser = {

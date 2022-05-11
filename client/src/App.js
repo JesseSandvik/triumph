@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const App = () => {
   const initialFormState = {
@@ -20,7 +20,6 @@ const App = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("formdata", formData);
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     const options = {
