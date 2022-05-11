@@ -9,4 +9,13 @@ describe("InputWithLabel", () => {
 
     expect(input).toBeInTheDocument();
   });
+  test("InputWithLabel has class when class is passed as prop", () => {
+    render(
+      <InputWithLabel className='testing-classname' name='test' type='text' />
+    );
+
+    const inputWithLabel = screen.getByRole("textbox");
+
+    expect(inputWithLabel).toHaveClass("testing-classname");
+  });
 });

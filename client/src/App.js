@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Registration from "./components/templates/registration/Registration";
 
@@ -33,10 +33,6 @@ const App = () => {
       .then((response) => response.json())
       .then((response) => setUser((user) => (user = response.data)));
   };
-
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
 
   return (
     <div className='App'>
