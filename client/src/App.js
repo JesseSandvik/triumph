@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import Registration from "./components/templates/registration/Registration";
 
 const App = () => {
   const initialFormState = {
@@ -32,15 +34,17 @@ const App = () => {
       .then((response) => setUser((user) => (user = response.data)));
   };
 
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
   return (
     <div className='App'>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='username'>Username: </label>
-        <input name='username' type='text' onChange={handleChange} />
-        <label htmlFor='password'>Password: </label>
-        <input name='password' type='password' onChange={handleChange} />
-        <button type='submit'>Register</button>
-      </form>
+      <Registration
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
       {user ? JSON.stringify(user) : ""}
     </div>
   );
