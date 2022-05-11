@@ -1,8 +1,6 @@
 import { Fragment } from "react";
 import Button from "../../atoms/button/Button";
 import Form from "../../molecules/form/Form";
-import Input from "../../atoms/input/Input";
-import InputLabel from "../../atoms/inputLabel/InputLabel";
 import InputWithLabel from "../../atoms/inputWithLabel/InputWithLabel";
 
 const Registration = ({ formData, handleChange, handleSubmit }) => {
@@ -12,10 +10,15 @@ const Registration = ({ formData, handleChange, handleSubmit }) => {
         <InputWithLabel
           name='username'
           type='text'
-          value={formData.username}
           onChange={handleChange}
+          value={formData.username}
         />
-        <InputWithLabel name='password' type='password' />
+        <InputWithLabel
+          name='password'
+          type='password'
+          onChange={handleChange}
+          value={formData.password}
+        />
         <Button type='submit'>Sign Up</Button>
       </Form>
     </Fragment>
