@@ -1,11 +1,10 @@
 import { useState } from "react";
-import Button from "../../components/atoms/button/Button";
-import Form from "../../components/molecules/form/Form";
-import InputWithLabel from "../../components/atoms/inputWithLabel/InputWithLabel";
+import Button from "../../basics/button/Button";
+import Form from "../../components/form/Form";
 
 import { initialFormState } from "../../forms/registration/initialFormState";
 
-const RegistrationPage = () => {
+const Registration = () => {
   const [formData, setFormData] = useState(initialFormState);
   const [error, setError] = useState(null);
   const [user, setUser] = useState({});
@@ -39,13 +38,13 @@ const RegistrationPage = () => {
   return (
     <main>
       <Form onSubmit={handleSubmit}>
-        <InputWithLabel
+        <input
           name='username'
           type='text'
           onChange={handleChange}
           value={formData.username}
         />
-        <InputWithLabel
+        <input
           name='password'
           type='password'
           onChange={handleChange}
@@ -58,4 +57,4 @@ const RegistrationPage = () => {
   );
 };
 
-export default RegistrationPage;
+export default Registration;

@@ -1,7 +1,7 @@
-import RegistrationPage from "./pages/registration/Registration";
+import Registration from "./features/registration/Registration";
 
 const App = () => {
-  return <RegistrationPage />;
+  return <Registration />;
 };
 
 export default App;
