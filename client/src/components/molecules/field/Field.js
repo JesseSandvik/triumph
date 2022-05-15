@@ -1,4 +1,5 @@
-import { Input, Label } from "components";
+import Input from "../../atoms/input/Input";
+import Label from "../../atoms/label/Label";
 
 const Field = ({ error, name, label, type, ...props }) => {
   return (
