@@ -1,4 +1,4 @@
-import Registration from "./features/registration/Registration";
+import Registration from "./components/pages/registration/Registration";
 
 const App = () => {
   return <Registration />;

@@ -1,5 +1,9 @@
-const Form = (props) => {
-  return <form {...props}>{props.children}</form>;
+const Form = ({ handleSubmit, children, ...props }) => {
+  return (
+    <form onSubmit={handleSubmit} {...props}>
+      {children}
+    </form>
+  );
 };
 
 export default Form;

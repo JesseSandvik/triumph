@@ -1,5 +1,5 @@
-const Label = (props) => {
-  return <label {...props}>{props.children}</label>;
+const Label = ({ children, ...props }) => {
+  return <label {...props}>{children}</label>;
 };
 
 export default Label;
