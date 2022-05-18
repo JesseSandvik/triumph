@@ -23,6 +23,13 @@ describe("<Button />", () => {
 
     expect(button).toBeDisabled();
   });
+  test('passed the id "test-id" as a prop to the <Button /> component', () => {
+    render(<Button id='test-id'>testing</Button>);
+
+    const button = screen.getByRole("button", { name: /testing/i });
+
+    expect(button).toHaveProperty("id", "test-id");
+  });
   test('passes the type "submit" to the <Button /> component', () => {
     render(<Button type='submit'>testing</Button>);
 
