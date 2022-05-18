@@ -1,5 +1,9 @@
-const Main = ({ children, ...props }) => {
-  return <main {...props}>{children}</main>;
+const Main = ({ children, className, id }) => {
+  return (
+    <main className={className} id={id}>
+      {children}
+    </main>
+  );
 };
 
 export default Main;

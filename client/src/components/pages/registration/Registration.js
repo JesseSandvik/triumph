@@ -20,10 +20,6 @@ const Registration = () => {
     );
   };
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const headers = new Headers();
