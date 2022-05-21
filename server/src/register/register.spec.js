@@ -21,7 +21,7 @@ describe("Register", () => {
     );
     expect(res.body.data.password).not.toEqual(user.password);
   });
-  test("returns a 404 status for a invalid/missing route", async () => {
+  test("returns a 404 status for an invalid/missing route", async () => {
     const res = await request(app).post("/register/bad-route");
 
     const { status } = res;
