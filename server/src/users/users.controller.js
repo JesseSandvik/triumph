@@ -1,7 +1,7 @@
 const users = require("../db/users.json");
 
 const list = (req, res) => {
-  res.sendStatus(200);
+  res.status(200).json({ data: users });
 };
 
 module.exports = {

@@ -7,5 +7,6 @@ describe("Users", () => {
 
     expect(res.body.error).toBeUndefined();
     expect(res.status).toEqual(200);
+    expect(res.type).toEqual(expect.stringContaining("json"));
   });
 });
