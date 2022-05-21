@@ -17,6 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "sass": "sass --watch src/scss:src/css",
     "test": "react-scripts test",
     "test:coverage": "react-scripts test --coverage",
     "cypress:open": "cypress open",
