@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import Button from "../../atoms/button/Button";
-import Field from "../../molecules/field/Field";
-import Form from "../../molecules/form/Form";
+import Button from "../../components/atoms/button/Button";
+import Field from "../../components/molecules/field/Field";
+import Form from "../../components/molecules/form/Form";
 
 import { initialFormState } from "./initialFormState";
 
-const Login = () => {
+const Registration = () => {
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState(initialFormState);
   const [currentUser, setCurrentUser] = useState({});
@@ -29,7 +29,7 @@ const Login = () => {
       headers,
       body: JSON.stringify({ data: formData }),
     };
-    fetch("http://localhost:5000/auth", options)
+    fetch("http://localhost:5000/register", options)
       .then((response) => response.json())
       .then((response) =>
         setCurrentUser((currentUser) => (currentUser = response.data))
@@ -62,4 +62,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Registration;
