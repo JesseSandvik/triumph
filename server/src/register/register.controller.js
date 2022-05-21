@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 
-const hasUsernameProperty = (req, res, next) => {
+const hasValidProperties = (req, res, next) => {
   const { password, username } = req.body.data;
 
   if (!username || !password) {
@@ -23,5 +23,5 @@ const create = async (req, res) => {
 };
 
 module.exports = {
-  create: [hasUsernameProperty, create],
+  create: [hasValidProperties, create],
 };
