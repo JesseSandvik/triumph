@@ -1,16 +1,9 @@
 const bcrypt = require("bcrypt");
+const hasProperties = require("../middleware/hasProperties");
 
-const hasValidProperties = (req, res, next) => {
-  const { password, username } = req.body.data;
+const properties = ["username", "password"];
 
-  if (!username || !password) {
-    next({
-      status: 400,
-      message: `A username is required!`,
-    });
-  }
-  next();
-};
+const hasValidProperties = hasProperties(properties);
 
 const create = async (req, res) => {
   const { username, password } = req.body.data;

@@ -1,19 +1,8 @@
-const hasValidProperties = (req, res, next) => {
-  const { username, password } = req.body.data;
+const hasProperties = require("../middleware/hasProperties");
 
-  if (!username) {
-    next({
-      status: 400,
-      message: "A username is required",
-    });
-  } else if (!password) {
-    next({
-      status: 400,
-      message: "A password is required",
-    });
-  }
-  next();
-};
+const properties = ["username", "password"];
+
+const hasValidProperties = hasProperties(properties);
 
 const handleLogin = (req, res) => {
   res.status(201).json({ data: req.body.data });
