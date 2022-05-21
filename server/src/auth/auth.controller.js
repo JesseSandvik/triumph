@@ -6,6 +6,11 @@ const hasValidProperties = (req, res, next) => {
       status: 400,
       message: "A username is required",
     });
+  } else if (!password) {
+    next({
+      status: 400,
+      message: "A password is required",
+    });
   }
   next();
 };
