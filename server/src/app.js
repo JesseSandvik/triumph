@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const errorHandler = require("./errors/errorHandler");
 const notFound = require("./errors/notFound");
@@ -11,6 +12,7 @@ const usersRouter = require("./users/users.router");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.use("/auth", authRouter);
 app.use("/register", registerRouter);

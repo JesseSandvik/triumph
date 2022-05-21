@@ -22,4 +22,11 @@ describe("Auth", () => {
     expect(res.status).toEqual(400);
     expect(res.body.error).toContain("password");
   });
+  test("returns a jwt for a successful POST request", async () => {
+    const user = { username: "ghostie", password: "@123456789" };
+    const res = await request(app).post("/auth").send({ data: user });
+
+    expect(res.body.error).toBeUndefined();
+    expect(res.type).toEqual(expect.stringContaining("json"));
+  });
 });
