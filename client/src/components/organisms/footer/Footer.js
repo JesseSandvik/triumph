@@ -1,9 +1,3 @@
-const Footer = ({ children, className, id }) => {
-  return (
-    <footer className={className} id={id}>
-      {children}
-    </footer>
-  );
-};
+const Footer = ({ children }) => <footer>{children}</footer>;
 
 export default Footer;

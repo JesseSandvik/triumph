@@ -3,4 +3,9 @@
   margin: 0;
 }
 
+button {
+  border: none;
+  text-transform: capitalize;
+}
+
 /*# sourceMappingURL=index.css.map */

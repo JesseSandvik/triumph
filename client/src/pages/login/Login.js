@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../../components/atoms/button/Button";
 import Field from "../../components/molecules/field/Field";
 import Form from "../../components/molecules/form/Form";
+import NavLink from "../../components/atoms/navLink/NavLink";
 import Paragraph from "../../components/atoms/paragraph/Paragraph";
 
 import { initialFormState } from "./initialFormState";
@@ -58,8 +59,10 @@ const Login = () => {
         />
         <Button type='submit'>login</Button>
       </Form>
-      <Paragraph>Already a member?</Paragraph>
-      <Paragraph>Click here to login.</Paragraph>
+      <Paragraph>Not a member?</Paragraph>
+      <Paragraph>
+        Sign up <NavLink to='/register'>here</NavLink>.
+      </Paragraph>
     </div>
   );
 };
