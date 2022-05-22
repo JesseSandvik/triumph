@@ -16,4 +16,11 @@ describe("<Paragraph />", () => {
 
     expect(paragraph).toHaveClass("test-class");
   });
+  test('passes the id "test-id" as a prop to the <Paragraph /> component', () => {
+    render(<Paragraph id='test-id'>testing</Paragraph>);
+
+    const paragraph = screen.getByText("testing");
+
+    expect(paragraph).toHaveProperty("id", "test-id");
+  });
 });

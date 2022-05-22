@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../../components/atoms/button/Button";
 import Field from "../../components/molecules/field/Field";
 import Form from "../../components/molecules/form/Form";
+import Paragraph from "../../components/atoms/paragraph/Paragraph";
 
 import { initialFormState } from "./initialFormState";
 
@@ -57,7 +58,8 @@ const Login = () => {
         />
         <Button type='submit'>login</Button>
       </Form>
-      {currentUser && JSON.stringify(currentUser)}
+      <Paragraph>Already a member?</Paragraph>
+      <Paragraph>Click here to login.</Paragraph>
     </div>
   );
 };
