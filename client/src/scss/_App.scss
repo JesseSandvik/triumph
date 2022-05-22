@@ -1,0 +1,9 @@
+@use './settings/' as *;
+
+#app {
+    background: $primary;
+    border: 1px solid red;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}

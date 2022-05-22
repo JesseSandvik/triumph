@@ -1,0 +1,10 @@
+@use '../settings/' as *;
+
+header {
+    background: $black;
+    grid-column: 1 / -1;
+    grid-row: 1 / 1;
+    padding: $padding;
+    position: sticky;
+    top: 0;
+}
