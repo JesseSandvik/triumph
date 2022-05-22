@@ -8,6 +8,7 @@
   background: #3b3b3b;
   border: 1px solid red;
   display: grid;
+  grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 }
@@ -33,6 +34,19 @@ header {
   padding: 1rem;
   position: sticky;
   top: 0;
+}
+
+main {
+  border: 1px solid aqua;
+  grid-column: 2/-1;
+  grid-row: 2/2;
+}
+
+#sidebar {
+  border: 1px solid yellowgreen;
+  grid-column: 1/1;
+  grid-row: 2/2;
+  padding: 1rem;
 }
 
 /*# sourceMappingURL=index.css.map */

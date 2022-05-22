@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Footer from "./components/organisms/footer/Footer";
 import Header from "./components/organisms/header/Header";
 import Main from "./components/organisms/main/Main";
+import Sidebar from "./components/organisms/sidebar/Sidebar";
 
 import { routes } from "./app/routes";
 
@@ -12,6 +13,7 @@ const App = () => {
   return (
     <div id='app'>
       <Header></Header>
+      <Sidebar></Sidebar>
       <Main>
         <Routes>
           {routes.map(({ element, path }, index) => (

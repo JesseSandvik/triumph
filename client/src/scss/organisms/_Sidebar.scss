@@ -1,0 +1,8 @@
+@use '../settings/' as *;
+
+#sidebar {
+    border: 1px solid yellowgreen;
+    grid-column: 1 / 1;
+    grid-row: 2 / 2;
+    padding: $padding;
+}
