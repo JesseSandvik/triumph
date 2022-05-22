@@ -1,70 +1,74 @@
 const request = require("supertest");
 const app = require("../app");
+const serverRequest = request(app);
 
-describe("Register", () => {
-  test("returns a 201 status for a successful POST request", async () => {
-    const user = {
-      username: "Dennis_Reynolds",
-      password: "!IamAGoldenGod10",
-    };
-
-    const res = await request(app).post("/register").send({ data: user });
-
-    expect(res.body.error).toBeUndefined();
-    expect(res.status).toEqual(201);
-    expect(res.type).toEqual(expect.stringContaining("json"));
-    expect(res.body.data).toEqual(
-      expect.objectContaining({
-        username: user.username,
-        password: expect.any(String),
-      })
-    );
-    expect(res.body.data.password).not.toEqual(user.password);
+describe("POST, /register", () => {
+  describe("not found handler", () => {
+    test("should return a 404 status code for a non-existent route", async () => {
+      const { status } = await serverRequest.get("/register/non-existent");
+      expect(status).toEqual(404);
+    });
   });
-  test("returns a 404 status for an invalid/missing route", async () => {
-    const res = await request(app).post("/register/bad-route");
-
-    const { status } = res;
-    expect(res.body.error).toBeDefined();
-    expect(status).toEqual(404);
-    expect(res.body.error).toContain("/register/bad-route");
-  });
-  test("returns a 400 status if the username is missing", async () => {
+  describe("given a username and password", () => {
     const user = {
-      password: "@missingUsername99",
+      username: "username",
+      password: "password",
     };
-    const res = await request(app).post("/register").send({ data: user });
-
-    expect(res.body.error).toBeDefined();
-    expect(res.status).toEqual(400);
+    test("should respond with a 201 status code", async () => {
+      const { status } = await serverRequest
+        .post("/register")
+        .send({ data: user });
+      expect(status).toEqual(201);
+    });
+    test("should specify json in the content type header", async () => {
+      const { headers } = await serverRequest
+        .post("/register")
+        .send({ data: user });
+      expect(headers["content-type"]).toEqual(expect.stringContaining("json"));
+    });
+    test("response should have a userId", async () => {
+      const { body } = await serverRequest
+        .post("/register")
+        .send({ data: user });
+      expect(body.data.userId).toBeDefined();
+    });
   });
-  test("returns a 400 status if the username is an empty string", async () => {
-    const user = {
-      username: "",
-      password: "@usernameIsEmpty99",
-    };
-    const res = await request(app).post("/register").send({ data: user });
+  describe("when the username and/or password is missing", () => {
+    let user = {};
+    beforeEach(() => {
+      user = {};
+    });
 
-    expect(res.body.error).toBeDefined();
-    expect(res.status).toEqual(400);
-  });
-  test("returns a 400 status if the password is missing", async () => {
-    const user = {
-      username: "testingUsername99",
-    };
-    const res = await request(app).post("/register").send({ data: user });
-
-    expect(res.body.error).toBeDefined();
-    expect(res.status).toEqual(400);
-  });
-  test("returns a 400 status if the password is an empty string", async () => {
-    const user = {
-      username: "testingUsername",
-      password: "",
-    };
-    const res = await request(app).post("/register").send({ data: user });
-
-    expect(res.body.error).toBeDefined();
-    expect(res.status).toEqual(400);
+    test("should respond with a 400 status code for a missing username", async () => {
+      user.password = "password";
+      const { status } = await serverRequest
+        .post("/register")
+        .send({ data: user });
+      expect(status).toEqual(400);
+    });
+    test("should respond with a 400 status code for a username that is an empty string", async () => {
+      user.username = "";
+      user.password = "password";
+      const { status } = await serverRequest
+        .post("/register")
+        .send({ data: user });
+      expect(status).toEqual(400);
+    });
+    test("should respond with a 400 status code for a missing password", async () => {
+      user.username = "username";
+      const { status } = await serverRequest
+        .post("/register")
+        .send({ data: user });
+      expect(status).toEqual(400);
+    });
+    test("should respond with a 400 status code for a password that is an empty string", async () => {
+      user.username = "username";
+      user.password = "";
+      const { status } = await serverRequest
+        .post("/register")
+        .send({ data: user });
+      expect(status).toEqual(400);
+    });
+    // should respond with a 400 status code
   });
 });

@@ -1,6 +1,12 @@
 const jwt = require("jsonwebtoken");
 
 const hasProperties = require("../middleware/hasProperties");
+const usersDB = {
+  users: require("../db/users.json"),
+  setUsers: function (data) {
+    this.users = data;
+  },
+};
 
 const properties = ["username", "password"];
 const hasValidProperties = hasProperties(properties);

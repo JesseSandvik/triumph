@@ -1,64 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1652050271738" clover="3.2.0">
-  <project timestamp="1652050271738" name="All files">
-    <metrics statements="35" coveredstatements="35" conditionals="6" coveredconditionals="4" methods="4" coveredmethods="4" elements="45" coveredelements="43" complexity="0" loc="35" ncloc="35" packages="3" files="5" classes="5"/>
+<coverage generated="1653251729632" clover="3.2.0">
+  <project timestamp="1653251729632" name="All files">
+    <metrics statements="73" coveredstatements="73" conditionals="4" coveredconditionals="2" methods="8" coveredmethods="8" elements="85" coveredelements="83" complexity="0" loc="73" ncloc="73" packages="6" files="10" classes="10"/>
     <package name="src">
-      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="20" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="app.js" path="C:\Users\embra\triumph\server\src\app.js">
-        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
+        <metrics statements="20" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.auth">
+      <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="auth.controller.js" path="C:\Users\embra\triumph\server\src\auth\auth.controller.js">
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+      </file>
+      <file name="auth.router.js" path="C:\Users\embra\triumph\server\src\auth\auth.router.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.errors">
       <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="errorHandler.js" path="C:\Users\embra\triumph\server\src\errors\errorHandler.js">
         <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="5" type="cond" truecount="0" falsecount="2"/>
-        <line num="3" count="5" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="8" type="cond" truecount="0" falsecount="2"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
       </file>
       <file name="notFound.js" path="C:\Users\embra\triumph\server\src\errors\notFound.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.middleware">
+      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <file name="hasProperties.js" path="C:\Users\embra\triumph\server\src\middleware\hasProperties.js">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="6" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="16" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="9" count="8" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.register">
-      <metrics statements="17" coveredstatements="17" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+      <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="register.controller.js" path="C:\Users\embra\triumph\server\src\register\register.controller.js">
-        <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="5" type="stmt"/>
-        <line num="6" count="5" type="cond" truecount="4" falsecount="0"/>
-        <line num="7" count="4" type="stmt"/>
-        <line num="12" count="5" type="stmt"/>
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
       </file>
       <file name="register.router.js" path="C:\Users\embra\triumph\server\src\register\register.router.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.users">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="users.controller.js" path="C:\Users\embra\triumph\server\src\users\users.controller.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+      </file>
+      <file name="users.router.js" path="C:\Users\embra\triumph\server\src\users\users.router.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
       </file>
     </package>
   </project>
