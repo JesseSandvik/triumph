@@ -55,7 +55,7 @@ const Login = () => {
           type='password'
           value={formData.password ? formData.password : ""}
         />
-        <Button type='submit'>sign up</Button>
+        <Button type='submit'>login</Button>
       </Form>
       {currentUser && JSON.stringify(currentUser)}
     </div>
