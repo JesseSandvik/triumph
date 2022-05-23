@@ -24,10 +24,53 @@ describe("POST, /auth", () => {
     beforeEach(() => {
       user = {};
     });
-    test("should respond with a 400 status code for a missing username", async () => {
+    test("should respond with a 400 status code if the username is missing", async () => {
+      user.password = "password";
+      const { status } = await serverRequest.post("/auth").send({ data: user });
+      expect(status).toEqual(400);
+    });
+    test("should respond with an error message if the username is missing", async () => {
+      user.password = "password";
+      const { body } = await serverRequest.post("/auth").send({ data: user });
+      expect(body.error).toBeDefined();
+      expect(body.error).toContain("username");
+    });
+    test("should respond with a 400 status code if the username is an empty string", async () => {
+      user.username = "";
+      user.password = "password";
+      const { status } = await serverRequest.post("/auth").send({ data: user });
+      expect(status).toEqual(400);
+    });
+    test("should respond with an error message if the username is an empty string", async () => {
+      user.username = "";
+      user.password = "password";
+      const { body } = await serverRequest.post("/auth").send({ data: user });
+      expect(body.error).toBeDefined();
+      expect(body.error).toContain("username");
+    });
+    test("should respond with a 400 status code if the password is missing", async () => {
       user.username = "username";
       const { status } = await serverRequest.post("/auth").send({ data: user });
       expect(status).toEqual(400);
+    });
+    test("should respond with an error message if the password is missing", async () => {
+      user.username = "username";
+      const { body } = await serverRequest.post("/auth").send({ data: user });
+      expect(body.error).toBeDefined();
+      expect(body.error).toContain("password");
+    });
+    test("should respond with a 400 status code if the password is an empty string", async () => {
+      user.username = "username";
+      user.password = "";
+      const { status } = await serverRequest.post("/auth").send({ data: user });
+      expect(status).toEqual(400);
+    });
+    test("should respond with an error message if the password is an empty string", async () => {
+      user.username = "username";
+      user.password = "";
+      const { body } = await serverRequest.post("/auth").send({ data: user });
+      expect(body.error).toBeDefined();
+      expect(body.error).toContain("password");
     });
   });
 });

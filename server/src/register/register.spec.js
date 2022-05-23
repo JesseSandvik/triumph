@@ -51,14 +51,14 @@ describe("POST, /register", () => {
       user = {};
     });
 
-    test("should respond with a 400 status code for a missing username", async () => {
+    test("should respond with a 400 status code if the username is missing", async () => {
       user.password = "password";
       const { status } = await serverRequest
         .post("/register")
         .send({ data: user });
       expect(status).toEqual(400);
     });
-    test("should respond with a 400 status code for a username that is an empty string", async () => {
+    test("should respond with a 400 status code if the username is an empty string", async () => {
       user.username = "";
       user.password = "password";
       const { status } = await serverRequest
@@ -66,14 +66,14 @@ describe("POST, /register", () => {
         .send({ data: user });
       expect(status).toEqual(400);
     });
-    test("should respond with a 400 status code for a missing password", async () => {
+    test("should respond with a 400 status code if the password is missing", async () => {
       user.username = "username";
       const { status } = await serverRequest
         .post("/register")
         .send({ data: user });
       expect(status).toEqual(400);
     });
-    test("should respond with a 400 status code for a password that is an empty string", async () => {
+    test("should respond with a 400 status code if the password is an empty string", async () => {
       user.username = "username";
       user.password = "";
       const { status } = await serverRequest
