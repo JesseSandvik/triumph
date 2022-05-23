@@ -1,4 +1,5 @@
 const hasProperties = (properties) => {
+  if (!properties || !Array.isArray(properties)) return;
   return (req, res, next) => {
     const { data } = req.body;
     properties.map((property) => {
