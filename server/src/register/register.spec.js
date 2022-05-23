@@ -3,24 +3,6 @@ const app = require("../app");
 const serverRequest = request(app);
 
 describe("POST, /register", () => {
-  describe("not found handler", () => {
-    test("should return a 404 status code for a non-existent route", async () => {
-      const user = {
-        username: "username",
-        password: "password",
-      };
-      const { status } = await serverRequest
-        .post("/register/non-existent")
-        .send({ data: user });
-      expect(status).toEqual(404);
-    });
-  });
-  describe("error handler", () => {
-    test("should return a 500 status for an internal server error", async () => {
-      const { status } = await serverRequest.post("/register");
-      expect(status).toEqual(500);
-    });
-  });
   describe("given a username and password", () => {
     const user = {
       username: "username",
@@ -80,6 +62,12 @@ describe("POST, /register", () => {
         .post("/register")
         .send({ data: user });
       expect(status).toEqual(400);
+    });
+  });
+  describe("when no data is sent with the request", () => {
+    test("should return a 500 status code", async () => {
+      const { status } = await serverRequest.post("/register");
+      expect(status).toEqual(500);
     });
   });
 });

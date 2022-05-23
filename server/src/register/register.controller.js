@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const hasProperties = require("../middleware/hasProperties");
+const hasProperties = require("../middleware/hasProperties/hasProperties");
 
 const fsPromises = require("fs").promises;
 const path = require("path");

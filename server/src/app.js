@@ -4,8 +4,8 @@ const app = express();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
-const errorHandler = require("./errors/errorHandler");
-const notFound = require("./errors/notFound");
+const errorHandler = require("./errors/errorHandler/errorHandler");
+const notFound = require("./errors/notFound/notFound");
 const authRouter = require("./auth/auth.router");
 const registerRouter = require("./register/register.router");
 const usersRouter = require("./users/users.router");

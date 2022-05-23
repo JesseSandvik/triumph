@@ -1,19 +1,12 @@
 const request = require("supertest");
 const app = require("../app");
+const serverRequest = request(app);
 
-describe("Users", () => {
-  test("returns a 200 for a successful GET request for users list", async () => {
-    const res = await request(app).get("/users/list");
-
-    expect(res.body.error).toBeUndefined();
-    expect(res.status).toEqual(200);
-    expect(res.type).toEqual(expect.stringContaining("json"));
-  });
-  test("returns a 404 status for an invalid/missing route", async () => {
-    const res = await request(app).get("/users/listing");
-
-    expect(res.body.error).toBeDefined();
-    expect(res.status).toEqual(404);
-    expect(res.body.error).toContain("/users/listing");
+describe("GET, /users/list", () => {
+  describe("when the request is successful", () => {
+    test("should return a 200 status", async () => {
+      const { status } = await serverRequest.get("/users/list");
+      expect(status).toEqual(200);
+    });
   });
 });

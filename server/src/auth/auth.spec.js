@@ -73,4 +73,10 @@ describe("POST, /auth", () => {
       expect(body.error).toContain("password");
     });
   });
+  describe("when no data is sent with the request", () => {
+    test("should return a 500 status code", async () => {
+      const { status } = await serverRequest.post("/auth");
+      expect(status).toEqual(500);
+    });
+  });
 });
