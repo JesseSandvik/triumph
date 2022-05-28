@@ -1,69 +1,62 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Field, Formik, Form } from "formik";
+import * as Yup from "yup";
 import Button from "../../components/atoms/button/Button";
-import Field from "../../components/molecules/field/Field";
-import Form from "../../components/molecules/form/Form";
-import NavLink from "../../components/atoms/navLink/NavLink";
-import Paragraph from "../../components/atoms/paragraph/Paragraph";
+import Main from "../../components/organisms/main/Main";
+import TextField from "../../mUI/textField/TextField";
 
 import { initialFormState } from "./initialFormState";
 
 const Login = () => {
   const [error, setError] = useState(null);
-  const [formData, setFormData] = useState(initialFormState);
   const [currentUser, setCurrentUser] = useState({});
 
-  const handleChange = ({ target }) => {
-    setFormData(
-      (formData) =>
-        (formData = {
-          ...formData,
-          [target.name]: target.value,
-        })
-    );
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (values) => {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     const options = {
       method: "POST",
       headers,
-      body: JSON.stringify({ data: formData }),
+      body: JSON.stringify({ data: values }),
     };
     fetch("http://localhost:5000/auth", options)
       .then((response) => response.json())
+      .then((response) => console.log(response))
       .then((response) =>
-        setCurrentUser((currentUser) => (currentUser = response.data))
+        setCurrentUser((currentUser) => (currentUser = response))
       )
-      .then(() => setFormData((formData) => (formData = initialFormState)))
       .catch((err) => setError((error) => (error = err)));
   };
 
+  const validationSchema = Yup.object().shape({
+    username: Yup.string().required(),
+    password: Yup.string().required(),
+  });
+
   return (
-    <div>
-      <Form onSubmit={handleSubmit}>
-        <Field
-          label='username: '
-          name='username'
-          onChange={handleChange}
-          type='text'
-          value={formData.username ? formData.username : ""}
-        />
-        <Field
-          label='password: '
-          name='password'
-          onChange={handleChange}
-          type='password'
-          value={formData.password ? formData.password : ""}
-        />
-        <Button type='submit'>login</Button>
-      </Form>
-      <Paragraph>Not a member?</Paragraph>
-      <Paragraph>
-        Sign up <NavLink to='/register'>here</NavLink>.
-      </Paragraph>
-    </div>
+    <Main>
+      <Formik
+        initialValues={initialFormState}
+        validationSchema={validationSchema}
+        onSubmit={(values, { setSubmitting }) => {
+          setSubmitting(true);
+          handleSubmit(values);
+          setSubmitting(false);
+        }}
+      >
+        <Form>
+          <Field as={TextField} label='username' name='username' type='text' />
+          <Field
+            as={TextField}
+            label='password'
+            name='password'
+            type='password'
+          />
+          <Button type='submit'>sign up</Button>
+        </Form>
+      </Formik>
+      {currentUser && JSON.stringify(currentUser)}
+    </Main>
   );
 };
 

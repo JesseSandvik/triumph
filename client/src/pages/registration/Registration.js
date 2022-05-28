@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import { Field, Formik, Form, useField } from "formik";
+import { useState } from "react";
+import { Field, Formik, Form } from "formik";
+import * as Yup from "yup";
 import Button from "../../components/atoms/button/Button";
 import Main from "../../components/organisms/main/Main";
 import TextField from "../../mUI/textField/TextField";
@@ -26,11 +27,17 @@ const Registration = () => {
       .catch((err) => setError((error) => (error = err)));
   };
 
+  const validationSchema = Yup.object().shape({
+    username: Yup.string().required(),
+    password: Yup.string().required(),
+  });
+
   return (
     <Main>
       <Formik
         initialValues={initialFormState}
-        onSubmit={async (values, { setSubmitting }) => {
+        validationSchema={validationSchema}
+        onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true);
           handleSubmit(values);
           setSubmitting(false);
