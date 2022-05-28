@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../../components/atoms/button/Button";
 import Field from "../../components/molecules/field/Field";
 import Form from "../../components/molecules/form/Form";
+import Main from "../../components/organisms/main/Main";
 
 import { initialFormState } from "./initialFormState";
 
@@ -39,7 +40,7 @@ const Registration = () => {
   };
 
   return (
-    <div>
+    <Main>
       <Form onSubmit={handleSubmit}>
         <Field
           label='username: '
@@ -58,7 +59,7 @@ const Registration = () => {
         <Button type='submit'>sign up</Button>
       </Form>
       {currentUser && JSON.stringify(currentUser)}
-    </div>
+    </Main>
   );
 };
 
