@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { Formik, Form } from "formik";
 import Button from "../../components/atoms/button/Button";
 import Field from "../../components/molecules/field/Field";
-import Form from "../../components/molecules/form/Form";
 import Main from "../../components/organisms/main/Main";
 
 import { initialFormState } from "./initialFormState";
@@ -41,23 +41,25 @@ const Registration = () => {
 
   return (
     <Main>
-      <Form onSubmit={handleSubmit}>
-        <Field
-          label='username: '
-          name='username'
-          onChange={handleChange}
-          type='text'
-          value={formData.username ? formData.username : ""}
-        />
-        <Field
-          label='password: '
-          name='password'
-          onChange={handleChange}
-          type='password'
-          value={formData.password ? formData.password : ""}
-        />
-        <Button type='submit'>sign up</Button>
-      </Form>
+      <Formik initialValues={initialFormState} onSubmit={async (values) => {}}>
+        <Form>
+          <Field
+            label='username: '
+            name='username'
+            onChange={handleChange}
+            type='text'
+            value={formData.username ? formData.username : ""}
+          />
+          <Field
+            label='password: '
+            name='password'
+            onChange={handleChange}
+            type='password'
+            value={formData.password ? formData.password : ""}
+          />
+          <Button type='submit'>sign up</Button>
+        </Form>
+      </Formik>
       {currentUser && JSON.stringify(currentUser)}
     </Main>
   );
