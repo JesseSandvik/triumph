@@ -1,61 +1,48 @@
 import { useEffect, useState } from "react";
-import { Formik, Form } from "formik";
+import { Field, Formik, Form, useField } from "formik";
 import Button from "../../components/atoms/button/Button";
-import Field from "../../components/molecules/field/Field";
 import Main from "../../components/organisms/main/Main";
+import TextField from "../../mUI/textField/TextField";
 
 import { initialFormState } from "./initialFormState";
 
 const Registration = () => {
   const [error, setError] = useState(null);
-  const [formData, setFormData] = useState(initialFormState);
   const [currentUser, setCurrentUser] = useState({});
 
-  const handleChange = ({ target }) => {
-    setFormData(
-      (formData) =>
-        (formData = {
-          ...formData,
-          [target.name]: target.value,
-        })
-    );
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (values) => {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
     const options = {
       method: "POST",
       headers,
-      body: JSON.stringify({ data: formData }),
+      body: JSON.stringify({ data: values }),
     };
     fetch("http://localhost:5000/register", options)
       .then((response) => response.json())
       .then((response) =>
         setCurrentUser((currentUser) => (currentUser = response.data))
       )
-      .then(() => setFormData((formData) => (formData = initialFormState)))
       .catch((err) => setError((error) => (error = err)));
   };
 
   return (
     <Main>
-      <Formik initialValues={initialFormState} onSubmit={async (values) => {}}>
+      <Formik
+        initialValues={initialFormState}
+        onSubmit={async (values, { setSubmitting }) => {
+          setSubmitting(true);
+          handleSubmit(values);
+          setSubmitting(false);
+        }}
+      >
         <Form>
+          <Field as={TextField} label='username' name='username' type='text' />
           <Field
-            label='username: '
-            name='username'
-            onChange={handleChange}
-            type='text'
-            value={formData.username ? formData.username : ""}
-          />
-          <Field
-            label='password: '
+            as={TextField}
+            label='password'
             name='password'
-            onChange={handleChange}
             type='password'
-            value={formData.password ? formData.password : ""}
           />
           <Button type='submit'>sign up</Button>
         </Form>
