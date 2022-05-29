@@ -1,30 +1,59 @@
-import { useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { Field, Formik, Form } from "formik";
 import * as Yup from "yup";
+
 import Button from "../../components/atoms/button/Button";
 import Main from "../../components/organisms/main/Main";
 import TextField from "../../mUI/textField/TextField";
 
 import { initialFormState } from "./initialFormState";
+import { setCredentials } from "../../features/auth/authSlice";
+import { useLoginMutation } from "../../features/auth/authApiSlice";
 
 const Login = () => {
-  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userRef = useRef();
+  const errorRef = useRef();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [login, { isLoading }] = useLoginMutation();
+  const [errorMessage, setErrorMessage] = useState("");
   const [accessToken, setAccessToken] = useState("");
 
-  const handleSubmit = (values) => {
-    const headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    const options = {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ data: values }),
-    };
-    fetch("http://localhost:5000/auth", options)
-      .then((response) => response.json())
-      .then((response) =>
-        setAccessToken((accessToken) => (accessToken = response.accessToken))
-      )
-      .catch((err) => setError((error) => (error = err)));
+  useEffect(() => {
+    userRef.current.focus();
+  }, []);
+
+  useEffect(() => {
+    setErrorMessage((errorMessage) => (errorMessage = ""));
+  }, [username, password]);
+
+  const handleSubmit = async (values) => {
+    try {
+      const response = await login({ username, password }).unwrap();
+      dispatch(setCredentials({ ...response, username }));
+      setUsername((username) => (username = ""));
+      setPassword((password) => (password = ""));
+      navigate("/weclome");
+    } catch (error) {
+      if (!error?.response) {
+        setErrorMessage(
+          (errorMessage) => (errorMessage = "No Server Response")
+        );
+      } else if (error?.response?.status === 400) {
+        setErrorMessage(
+          (errorMessage) => (errorMessage = "Missing Username or Password")
+        );
+      } else if (error?.response?.status === 401) {
+        setErrorMessage((errorMessage) => (errorMessage = "Unauthorized"));
+      } else {
+        setErrorMessage((errorMessage) => (errorMessage = "Login Failed"));
+      }
+      errorRef.current.focus();
+    }
   };
 
   const validationSchema = Yup.object().shape({
@@ -32,13 +61,13 @@ const Login = () => {
     password: Yup.string().required(),
   });
 
-  if (accessToken) {
-    return <p>{accessToken}</p>;
+  if (isLoading) {
+    return <p>Loading...</p>;
   } else {
     return (
       <Main>
         <Formik
-          initialValues={initialFormState}
+          initialValues={{ username, password }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
